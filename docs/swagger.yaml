@@ -1,0 +1,48 @@
+description: ''
+get:
+    tags:
+        - details
+    responses:
+        '200':
+            content:
+                application/json:
+                    schema:
+                        type: array
+                        items:
+                            type: string
+                    examples:
+                        Full details of a given game:
+                            value: "\t\n0\t\"Witcher 3\"\n1\t\"Cyberpunk 2077\""
+            description: Returns full details of a given id game
+        '404':
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/error'
+                    examples:
+                        Game /w+ was not found:
+                            value: Game //w+ was not found in game array.
+            description: Game was not found in games array.
+    summary: Get full details of a game
+    description: Returns full details of a given id game
+post:
+    tags:
+        - new-game
+    summary: Creates a game
+    description: Creates a new game.
+delete:
+    requestBody:
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/delete-game'
+    tags:
+        - delete
+    responses:
+        '204':
+            content:
+                application/json: {}
+        '404':
+            description: not found
+    summary: delete games
+    description: delete games
